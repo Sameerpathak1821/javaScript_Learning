@@ -55,7 +55,5 @@ const url =
 
 
 let repoCount = 100
-
-
 // string interpolation
 console.log(`hello my name is ${name} and my repo count is ${repoCount}`);

@@ -1,0 +1,99 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Game container */
+.game-container {
+  text-align: center;
+  background: #f7b3b3;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  width: 550px;
+}
+
+.game-title {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Status text */
+.status {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #444;
+}
+
+.winner {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #444;
+}
+
+/* Game board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cell:hover {
+  background: #e6e6e6;
+}
+
+.cell.o {
+  color: #ff4b5c; /* red/pink for O */
+}
+
+.cell.x {
+  color: #4b79ff; /* blue for X */
+}
+
+/* Restart button */
+.restart-btn {
+  background: #667eea;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.restart-btn:hover {
+  background: #5558dd;
+}

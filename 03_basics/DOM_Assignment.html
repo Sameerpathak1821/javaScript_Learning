@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Assignment</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <ul class="language">
+      <li>javaScript</li>
+    </ul>
+
+    <script>
+
+        // function to create a new DOM element and making it visible on the screen
+
+      function addLanguage(langName) {
+        // step 1 -- > create new element
+        const newLang = document.createElement("li");
+
+        // step 2 --> giving attributes
+        newLang.innerHTML = `${langName}`
+
+        // step 3 --> appending element
+
+        document.querySelector(".language").appendChild(newLang);
+      }
+
+      // calling the function
+      addLanguage("python");
+      addLanguage("c++")
+
+      // editing the DOM element
+      const secondElement =  document.querySelector("li:nth-child(2)")
+    //   secondElement.innerHTML = "JAVA" ----> NOT USE THIS not a good practice
+
+    //Step 1: ---> create a new element
+    const newLi = document.createElement("li")
+
+    // step 2: --> set the attributes
+    newLi.textContent = ".NET"
+
+    // step 3: ---> replace with  the old element
+    secondElement.replaceWith(newLi)
+
+
+    // how to remove the element
+
+    // step 1: --> select which element to remove
+    const lastElement = document.querySelector("li:last-child")
+
+    // step 2:----> remove the selected element  
+    lastElement.remove()  // c++  is removed
+     
+    </script>
+  </body>
+</html>

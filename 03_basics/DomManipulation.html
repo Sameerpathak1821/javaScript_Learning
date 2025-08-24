@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom Learning</title>
+</head>
+<body>
+    <div class="bg-black">
+        <h1 class="heading">Dom Learning with chai aue code</h1>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+</body>
+</html>
+
+
+<!-- Document Object Model (DOM)
+
+
+"The Document Object Model (DOM) is a programming interface for web documents. It represents the HTML or XML document as a tree structure where each node is an object that can be manipulated with JavaScript."
+
+Detailed Explanation
+
+Browser takes HTML and parses it → creates DOM Tree.
+
+Each part of the document becomes a node:
+
+Document Node → root (document)
+
+Element Nodes → tags (<div>, <p>)
+
+Attribute Nodes → attributes (id="title")
+
+Text Nodes → actual text inside elements
+
+DOM is live → changes reflect immediately on the page.
+
+Diagram (Tree Structure Example)
+
+For this HTML:
+
+<html>
+  <body>
+    <h1 id="heading">Hello</h1>
+    <p>World</p>
+  </body>
+</html>
+
+
+DOM Tree looks like:
+
+Document
+ └── html
+      └── body
+           ├── h1 (id="heading")
+           │     └── "Hello"
+           └── p
+                 └── "World"
+
+JavaScript DOM Manipulation
+
+Selecting Elements
+
+document.getElementById("heading");       // single element by ID
+document.querySelector("p");              // first <p>
+document.querySelectorAll("p");           // all <p>
+
+
+Changing Content
+
+document.getElementById("heading").innerText = "Hi Sameer!";
+
+
+Changing Styles
+
+document.querySelector("p").style.color = "blue";
+
+
+Creating Elements
+
+const newDiv = document.createElement("div");
+newDiv.innerText = "New Element!";
+document.body.appendChild(newDiv);
+
+
+Event Handling
+
+document.getElementById("heading")
+        .addEventListener("click", () => {
+            alert("Heading clicked!");
+        });
+
+Real-World Use Cases
+
+Changing UI dynamically (dark mode, themes).
+
+Handling button clicks, form submissions.
+
+Validating input fields in real-time.
+
+Building Single Page Applications (SPAs).
+
+Animating or dynamically adding/removing elements.
+
+Common Pitfalls
+
+DOM manipulation can be expensive for large trees → better to use virtual DOM (React, Vue).
+
+Directly setting innerHTML can cause XSS attacks if input is not sanitized.
+
+Follow-Up Q&A
+
+Q1: What’s the difference between DOM and BOM?
+A: DOM → represents HTML/XML document.
+BOM (Browser Object Model) → represents browser objects like window, navigator, location.
+
+Q2: Is DOM part of JavaScript?
+A: No. DOM is provided by the browser as a Web API, JavaScript just uses it.
+
+Q3: Difference between innerText, textContent, and innerHTML?
+
+innerText → visible text only.
+
+textContent → all text (even hidden with CSS).
+
+innerHTML → raw HTML including tags.
+
+Q4: How does the DOM differ from the HTML source?
+A: DOM is a live representation; it may differ if JavaScript manipulates the document after load.
+
+Q5: Performance optimization while manipulating DOM?
+A: Use techniques like DocumentFragment, batch updates, and minimize reflows/repaints. -->

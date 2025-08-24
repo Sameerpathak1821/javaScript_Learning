@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async javScript</title>
+  </head>
+  <body>
+    <h1>Hi there</h1>
+    <button id="stop">STOP</button>
+
+    <script>
+      const sayMyName = function () {
+        document.querySelector("h1").innerHTML = "sameer pathak";
+      };
+
+      const sayName = setTimeout(sayMyName, 2000);
+
+      // 2 sec se pehle agar cancel button click kr diya to naam change nhi hoga
+      document.querySelector("#stop").addEventListener("click", function () {
+        clearTimeout(sayName); // we do not have to pass function reference but we need to pass variable name holding setTimeOut
+        console.log("stopped");
+      });
+
+      /*
+    
+setTimeout in JavaScript
+1. Definition
+
+👉 setTimeout is a browser (Web API) function that executes a callback function after a specified delay (in milliseconds).
+👉 It is asynchronous and non-blocking.
+
+✅ Interview line:
+"setTimeout schedules a function to run after a delay, but does not block the main thread."
+
+2. Syntax
+setTimeout(callback, delay, arg1, arg2, ...);
+
+
+callback → function to execute after delay
+
+delay → time in ms (minimum wait, not guaranteed)
+
+arg1, arg2… → optional arguments passed to callback
+
+3. Example
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Inside timeout");
+}, 2000);
+
+console.log("End");
+
+Output:
+Start
+End
+Inside timeout   (after ~2s)
+
+
+✅ Shows that setTimeout is non-blocking (async).
+
+4. Use Cases
+
+Running code after a delay
+
+Scheduling retries (like failed API calls)
+
+Creating animations with delays
+
+Debouncing user input
+
+5. Important Details & Interview Traps
+a) Minimum Delay, Not Exact
+
+Even with setTimeout(fn, 0), the function is not executed immediately — it goes into the macrotask queue.
+
+console.log("1");
+
+setTimeout(() => console.log("2"), 0);
+
+console.log("3");
+// Output: 1 → 3 → 2
+
+
+👉 Shows the role of the event loop.
+
+b) Cancelling with clearTimeout
+const timer = setTimeout(() => console.log("Hello"), 3000);
+clearTimeout(timer); // ❌ callback won't run
+
+c) Passing Arguments
+setTimeout((name) => {
+  console.log(`Hello ${name}`);
+}, 2000, "Sameer");
+
+// Output after 2s: "Hello Sameer"
+
+d) Inside Loops (Common Trap)
+for (var i = 1; i <= 3; i++) {
+  setTimeout(() => console.log(i), i * 1000);
+}
+// Output: 4, 4, 4  (not 1, 2, 3)
+
+
+👉 Because var is function-scoped, all timeouts share the same i.
+✅ Fix with let:
+
+for (let i = 1; i <= 3; i++) {
+  setTimeout(() => console.log(i), i * 1000);
+}
+// Output: 1, 2, 3
+
+6. Follow-Up Q&A
+
+Q1: Is setTimeout part of JavaScript engine?
+👉 No, it’s part of the browser Web APIs (or Node.js API), not the JS engine itself.
+
+Q2: What happens if the call stack is busy when timeout ends?
+👉 The callback waits in the task queue until the call stack is clear (not guaranteed exact timing).
+
+Q3: Difference between setTimeout and setInterval?
+👉 setTimeout runs once after delay, setInterval runs repeatedly at intervals.
+
+Q4: Why does setTimeout(fn, 0) not execute immediately?
+👉 Because it’s put in the macrotask queue, and JS always finishes the current stack + microtasks first.
+
+✅ Interview-ready summary:
+"setTimeout is an asynchronous Web API that schedules a function after a minimum delay. Its execution depends on the event loop and call stack availability, not exact timing. It can be canceled using clearTimeout, and when used with var in loops, it often leads to unexpected results due to scope issues."
+    
+*/
+
+
+
+
+    </script>
+  </body>
+</html>

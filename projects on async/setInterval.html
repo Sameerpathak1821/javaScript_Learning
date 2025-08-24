@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval</title>
+</head>
+<body>
+    <h1>Sameer pathak</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <script>
+
+
+let intervalId; // store globally so both functions can access
+
+// start the task
+document.querySelector("#start").addEventListener("click", function() {
+    if (!intervalId) {  // prevent multiple intervals
+        intervalId = setInterval(function() {
+            console.log("sameer pathak", Date.now());
+        }, 1000);
+    }
+});
+
+// stop the task
+document.querySelector("#stop").addEventListener("click", function() {
+    clearInterval(intervalId); // use intervalId, not addEventListener return
+    intervalId = null; // reset so we can start again later
+    console.log("stopped");
+});
+        /*
+        
+        setInterval in JavaScript
+1. Definition
+
+👉 setInterval repeatedly executes a given function at fixed time intervals (in milliseconds), until it is stopped using clearInterval.
+
+✅ Interview line:
+"setInterval schedules a function to run repeatedly at a given interval, making it useful for tasks like timers, clocks, and animations."
+
+2. Syntax
+setInterval(callback, delay, arg1, arg2, ...);
+
+
+callback → function to run repeatedly
+
+delay → interval time in ms
+
+arg1, arg2… → optional arguments passed to the callback
+
+3. Example
+let count = 1;
+const intervalId = setInterval(() => {
+  console.log("Hello", count++);
+}, 1000);
+
+
+👉 This prints:
+
+Hello 1
+Hello 2
+Hello 3 ...
+
+
+every 1 second until stopped.
+
+4. Stopping with clearInterval
+let count = 1;
+const intervalId = setInterval(() => {
+  console.log("Hello", count++);
+  if (count > 5) {
+    clearInterval(intervalId);  // stops after 5 times
+    console.log("Stopped");
+  }
+}, 1000);
+
+5. Common Use Cases
+
+Live digital clocks
+
+Animations or slideshows
+
+Polling APIs at regular intervals
+
+Countdown timers
+
+Example: Digital Clock ⏰
+
+function showTime() {
+  const now = new Date();
+  document.querySelector("h1").innerText = now.toLocaleTimeString();
+}
+
+setInterval(showTime, 1000);
+
+6. Important Notes
+
+The delay is not guaranteed → execution depends on event loop availability.
+
+If the callback takes longer than the interval, calls may get delayed (but not skipped).
+
+Always store the interval ID if you want to stop it later.
+
+7. Follow-Up Q&A
+
+Q1: Difference between setTimeout and setInterval?
+👉 setTimeout runs once after delay, setInterval repeats until stopped.
+
+Q2: How do you stop a running interval?
+👉 Using clearInterval(intervalId).
+
+Q3: Can you create an interval that runs only 3 times?
+👉 Yes, use a counter inside the callback and clearInterval when the condition is met.
+
+Q4: What if you want a dynamic delay between executions?
+👉 Use recursive setTimeout instead of setInterval.
+
+Example:
+
+function run() {
+  console.log("Dynamic delay");
+  setTimeout(run, Math.random() * 2000); // random delay
+}
+setTimeout(run, 1000);
+
+
+✅ Interview-ready summary:
+"setInterval runs a function repeatedly at fixed intervals. It returns an interval ID, which can be stopped using clearInterval. Unlike setTimeout, it continues until explicitly stopped, and for dynamic scheduling, recursive setTimeout is usually preferred."
+        
+        
+        */
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background color changer</title>
+  </head>
+  <body style="background-color: #121212; color: aliceblue">
+    <h1>Background color changer</h1>
+    <h2>
+      click start to start background color change and stop to stop color change
+    </h2>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <h3 id="color">Your color code</h3>
+
+    <script>
+      const start = document.querySelector("#start");
+      const stop = document.querySelector("#stop");
+
+      let color
+      const randomColor = function () {
+        const hex = "0123456789ABCDEF";
+        color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += hex[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      };
+
+      // start generating color
+      let intervalId;
+      const startChnagingColor = function () {
+        function changeBGcolor() {
+          document.body.style.backgroundColor = randomColor();
+          document.querySelector("#color").innerHTML = color
+        }
+
+        if(!intervalId){
+         intervalId = setInterval(changeBGcolor, 1000);
+        }
+      };
+
+      // stop generating color
+      const stopChnagingColor = function () {
+        clearInterval(intervalId);
+        intervalId = null;
+      };
+
+      start.addEventListener("click", startChnagingColor);
+      stop.addEventListener("click", stopChnagingColor);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To-Do — Ultra Clean</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <header class="card__header">
+        <h1 class="title">📝 To-Do List</h1>
+        <p class="subtitle">Organize your day with style</p>
+      </header>
+
+      <!-- Controls -->
+      <div class="controls">
+        <form id="todo-form" class="add">
+          <input
+            id="task-input"
+            class="add__input"
+            type="text"
+            placeholder="Add a new task…"
+            autocomplete="off"
+          />
+          <button id="add-btn" class="btn btn--primary" type="button">Add</button>
+        </form>
+
+        <div class="filters" role="tablist">
+          <button class="chip filter-btn is-active" data-filter="all" id="filter-all">All</button>
+          <button class="chip filter-btn" data-filter="active" id="filter-active">Active</button>
+          <button class="chip filter-btn" data-filter="completed" id="filter-completed">Completed</button>
+          <button class="chip filter-btn" data-filter="pinned" id="filter-pinned">Pinned</button>
+        </div>
+      </div>
+
+      <!-- List -->
+      <ul id="task-list" class="list" aria-live="polite">
+        <!-- Example static items (remove if you want a clean slate) -->
+        <li class="item" data-id="demo-1">
+          <label class="item__checkbox">
+            <input type="checkbox" class="item__check" />
+            <span class="tick" aria-hidden="true"></span>
+          </label>
+          <span class="item__title">Explore this fancy UI</span>
+          <div class="item__actions">
+            <button class="icon-btn pin-btn" title="Pin">📌</button>
+            <button class="icon-btn edit-btn" title="Edit">✏️</button>
+            <button class="icon-btn delete-btn" title="Delete">🗑️</button>
+          </div>
+        </li>
+        <li class="item is-completed" data-id="demo-2">
+          <label class="item__checkbox">
+            <input type="checkbox" class="item__check" checked />
+            <span class="tick" aria-hidden="true"></span>
+          </label>
+          <span class="item__title">Mark me complete to see style</span>
+          <div class="item__actions">
+            <button class="icon-btn pin-btn" title="Pin">📌</button>
+            <button class="icon-btn edit-btn" title="Edit">✏️</button>
+            <button class="icon-btn delete-btn" title="Delete">🗑️</button>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Footer / Stats -->
+      <footer class="card__footer">
+        <div class="stats">
+          <span id="count-all" class="stat">Total: <strong>2</strong></span>
+          <span id="count-active" class="stat">Active: <strong>1</strong></span>
+          <span id="count-completed" class="stat">Completed: <strong>1</strong></span>
+        </div>
+        <button id="clear-completed" class="btn btn--ghost">Clear Completed</button>
+      </footer>
+    </section>
+  </main>
+
+  <!-- Hook your JS here -->
+  <!-- <script src="app.js"></script> -->
+   <script src="./script.js"></script>
+</body>
+</html>

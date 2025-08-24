@@ -1,0 +1,111 @@
+/*
+
+API Request in JavaScript
+
+1. What is an API request?
+
+👉 An API (Application Programming Interface) request in JS is how the browser or Node.js communicates with external services (like weather APIs, GitHub APIs, etc.) to fetch/send data.
+
+Usually made over HTTP.
+
+Common methods: GET, POST, PUT, DELETE.
+
+✅ Interview answer line:
+"An API request is how JavaScript communicates with servers to fetch or send data, usually done using fetch or libraries like Axios."
+
+2. API Request using fetch
+
+The fetch API is the modern way to make requests in JS.
+
+Example – GET request
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok " + response.status);
+    }
+    return response.json();  // convert to JSON
+  })
+  .then(data => {
+    console.log("Post:", data);
+  })
+  .catch(error => {
+    console.error("Fetch error:", error);
+  });
+
+
+👉 Steps:
+
+fetch(url) returns a Promise.
+
+response.json() parses the data.
+
+Handle success in .then() and errors in .catch().
+
+3. API Request with async/await
+
+Cleaner syntax for handling promises.
+
+async function getPost() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+    if (!response.ok) throw new Error("Network error: " + response.status);
+
+    const data = await response.json();
+    console.log("Post:", data);
+  } catch (err) {
+    console.error("Error:", err.message);
+  }
+}
+
+getPost();
+
+
+✅ This is the preferred modern style — easy to read & debug.
+
+4. POST Request (Sending Data)
+async function createPost() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: "JS Learner",
+        body: "Sameer is learning API requests!",
+        userId: 1
+      })
+    });
+
+    const data = await response.json();
+    console.log("Created Post:", data);
+  } catch (err) {
+    console.error("Error:", err);
+  }
+}
+
+createPost();
+
+5. Real-World Use Cases
+
+Fetching weather data 🌦️
+
+Displaying user info from GitHub API 👨‍💻
+
+Submitting forms to backend 📝
+
+Polling for updates (e.g., notifications 🔔)
+
+6. Follow-up Interview Questions
+
+Q1: Difference between fetch and XMLHttpRequest (XHR)?
+👉 fetch is modern, promise-based, and cleaner; XHR is older and callback-based.
+
+Q2: How do you handle errors in fetch?
+👉 Check response.ok and wrap in try/catch (for network or parsing errors).
+
+Q3: What happens if the API is slow?
+👉 The request remains pending; we can use AbortController to cancel a fetch.
+
+Q4: How do you secure API requests?
+👉 Use HTTPS, authentication tokens (JWT, OAuth), and avoid exposing API keys in frontend code.
+
+*/

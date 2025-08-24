@@ -1,0 +1,122 @@
+<!-- DOM Selectors in JavaScript
+
+"DOM selectors are methods provided by the browser to access HTML elements from the DOM, so we can read or manipulate them using JavaScript."
+
+Types of DOM Selectors
+1. Old/Traditional Selectors
+
+getElementById()
+
+document.getElementById("title");
+
+
+✅ Returns 1 element.
+❌ Only works with IDs.
+
+getElementsByClassName()
+
+document.getElementsByClassName("para");
+
+
+✅ Returns an HTMLCollection (array-like).
+❌ Not array → need Array.from() to use array methods.
+
+getElementsByTagName()
+
+document.getElementsByTagName("p");
+
+
+✅ Selects by tag (<p>, <div>).
+❌ Also returns HTMLCollection.
+
+2. Modern Selectors (More Powerful)
+
+querySelector()
+
+document.querySelector(".para");  // first element with class "para"
+document.querySelector("#title"); // first element with ID "title"
+
+
+✅ Returns the first match (very flexible, supports CSS selectors).
+
+querySelectorAll()
+
+document.querySelectorAll("p");
+
+
+✅ Returns a NodeList (can use forEach).
+✅ Supports complex CSS selectors (.container > p:first-child).
+
+Examples
+HTML:
+<div id="container">
+  <h1 id="title">Hello</h1>
+  <p class="para">Paragraph 1</p>
+  <p class="para">Paragraph 2</p>
+</div>
+
+JS Selectors:
+// 1. ID
+const heading = document.getElementById("title");
+
+// 2. Class
+const paragraphs = document.getElementsByClassName("para");
+
+// 3. Tag
+const allDivs = document.getElementsByTagName("div");
+
+// 4. querySelector
+const firstPara = document.querySelector(".para");
+
+// 5. querySelectorAll
+const allParas = document.querySelectorAll(".para");
+
+Use Cases
+
+Changing text:
+
+heading.innerText = "Hi Sameer!";
+
+
+Applying styles:
+
+firstPara.style.color = "blue";
+
+
+Looping through elements:
+
+allParas.forEach(p => p.style.fontWeight = "bold");
+
+Common Pitfalls
+
+getElementsByClassName() → live collection (updates if DOM changes).
+
+querySelectorAll() → static NodeList (does not auto-update).
+
+innerText vs innerHTML confusion.
+
+Follow-Up Q&A
+
+Q1: Difference between NodeList and HTMLCollection?
+
+NodeList → returned by querySelectorAll(), supports forEach().
+
+HTMLCollection → returned by getElementsByClassName/TagName, live, does not support array methods directly.
+
+Q2: Which one should we prefer in modern code?
+
+querySelector and querySelectorAll because they are flexible, support CSS selectors, and are widely used in modern JavaScript frameworks.
+
+Q3: Can we chain selectors?
+
+Yes:
+
+document.querySelector("#container .para");
+
+
+Q4: Performance-wise, which is fastest?
+
+getElementById() is the fastest (direct lookup).
+
+But in practice, differences are negligible — clarity and flexibility are preferred.
+ -->
